@@ -34,6 +34,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"  # matches current Python in production
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          limit-access-to-actor: true
       - name: "Run Python tests (on Docker)"
         run: |
             # assets is failing to build in CI, this tempoarary workaround primes the docker cache and gets things working
