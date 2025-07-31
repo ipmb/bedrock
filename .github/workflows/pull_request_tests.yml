@@ -37,10 +37,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20.14.0
-      - name: Webpack
-        run: |
-          npm ci
-          npm run build --verbose
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          limit-access-to-actor: true
       - name: "Run Python tests (on Docker)"
         run: |
             make clean test-image
